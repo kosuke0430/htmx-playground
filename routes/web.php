@@ -16,3 +16,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TopController;
 
 Route::get('/', [TopController::class, 'index']);
+Route::get('/new', function() {
+    return view('todo');
+});
