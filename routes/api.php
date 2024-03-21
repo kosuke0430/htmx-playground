@@ -27,16 +27,8 @@ Route::group([
     Route::controller(TodoItemController::class)->group(function () {
         Route::get('/list', 'index')->name('index');
         Route::get('/create', 'create')->name('create');
-        Route::patch('/update/{id}', 'update')->name('update');
-        Route::delete('delete/{todo_item}', 'delete')->name('delete');
+        Route::patch('/update/{todo_item}', 'update')->name('update');
+        Route::delete('/delete/{todo_item}', 'delete')->name('delete');
+        Route::get('/getStatus/{todo_item}', 'getStatus')->name('getStatus');
     });
-
-    Route::get('/getStatus', function() {
-        $responseValue = [
-            ["value" => TodoItem::TODO],
-            ["value" => TodoItem::IN_PROGRESS],
-            ["value" => TodoItem::DONE],
-        ];
-        return json_encode($responseValue);
-    })->name('getStatus');
 });
